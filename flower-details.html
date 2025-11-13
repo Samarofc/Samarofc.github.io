@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Details - BestFlowers</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="particles"></div>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="flower-icon">🌸</span>
+                <h1>BestFlowers</h1>
+            </div>
+            <a href="/" class="back-btn">
+                ← Back to Collection
+            </a>
+        </div>
+    </header>
+
+    <!-- Flower Details Section -->
+    <section class="flower-details-section">
+        <div class="container">
+            <div class="flower-details-container" id="flowerDetailsContainer">
+                <div class="loading">Loading flower details...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Firebase & App Script -->
+    <script type="module">
+        // Import Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-analytics.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDEaaMDgDZ3UK4o9qBdqOiZx8gKX5k5-LU",
+            authDomain: "bestflowers-test.firebaseapp.com",
+            projectId: "bestflowers-test",
+            storageBucket: "bestflowers-test.firebasestorage.app",
+            messagingSenderId: "59558482984",
+            appId: "1:59558482984:web:592d19fa805ce21c64511d",
+            measurementId: "G-HT5VYHC4XY"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const db = getFirestore(app);
+
+        // Get flower ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const flowerId = urlParams.get('id');
+
+        if (!flowerId) {
+            window.location.href = '/';
+        }
+
+        // Load flower details
+        async function loadFlowerDetails() {
+            try {
+                const flowerDoc = await getDoc(doc(db, 'flowers', flowerId));
+                
+                if (!flowerDoc.exists()) {
+                    document.getElementById('flowerDetailsContainer').innerHTML = `
+                        <div class="error-message">
+                            <h2>Flower not found</h2>
+                            <a href="/" class="btn-primary">Go back to collection</a>
+                        </div>
+                    `;
+                    return;
+                }
+
+                const flower = flowerDoc.data();
+                renderFlowerDetails(flower);
+            } catch (error) {
+                console.error("Error loading flower:", error);
+                document.getElementById('flowerDetailsContainer').innerHTML = `
+                    <div class="error-message">
+                        <h2>Error loading flower details</h2>
+                        <a href="/" class="btn-primary">Go back to collection</a>
+                    </div>
+                `;
+            }
+        }
+
+        // Render flower details
+        function renderFlowerDetails(flower) {
+            const container = document.getElementById('flowerDetailsContainer');
+            
+            const imageOrEmoji = flower.imageBase64 
+                ? `<img src="${flower.imageBase64}" alt="${flower.name}" class="flower-details-image">`
+                : `<div class="flower-details-emoji">${flower.emoji || '🌸'}</div>`;
+
+            // WhatsApp order message
+            const whatsappMessage = `Hi! I want to order *${flower.name}* for ₹${flower.price}. Please let me know the availability.`;
+            const whatsappNumber = '919891793539'; // Your WhatsApp number
+            const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+            container.innerHTML = `
+                <div class="flower-details-grid">
+                    <div class="flower-details-image-container">
+                        ${imageOrEmoji}
+                    </div>
+                    <div class="flower-details-content">
+                        <h1 class="flower-details-title">${flower.name}</h1>
+                        <p class="flower-details-color">
+                            <span class="label">Color:</span> ${flower.color}
+                        </p>
+                        <div class="flower-details-price">₹${flower.price}</div>
+                        <div class="flower-details-description">
+                            <h3>About this flower</h3>
+                            <p>${flower.description}</p>
+                        </div>
+                        <div class="flower-details-actions">
+                            <a href="${whatsappLink}" target="_blank" class="btn-primary btn-large" style="text-decoration: none;">
+                                <span style="font-size: 1.3rem;">💬</span> Order on WhatsApp
+                            </a>
+                            <a href="/" class="btn-secondary btn-large">Browse More</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Create floating particles
+        function createParticles() {
+            const particles = document.querySelector('.particles');
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particles.appendChild(particle);
+            }
+        }
+
+        createParticles();
+        loadFlowerDetails();
+    </script>
+</body>
+</html>
