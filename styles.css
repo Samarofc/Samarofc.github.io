@@ -5,25 +5,33 @@
 }
 
 :root {
-    --primary: #ff6b9d;
-    --secondary: #c44569;
-    --accent: #ffa07a;
+    --primary: #d4418e;
+    --secondary: #9c1de7;
+    --accent: #fb8b24;
     --dark: #1a1a2e;
     --light: #f8f9fa;
-    --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    --shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-    --shadow-hover: 0 30px 80px rgba(0, 0, 0, 0.25);
+    --gradient: linear-gradient(135deg, #d4418e 0%, #9c1de7 100%);
+    --gradient-2: linear-gradient(135deg, #fb8b24 0%, #d4418e 100%);
+    --gradient-3: linear-gradient(135deg, #9c1de7 0%, #5f0f40 100%);
+    --shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 30px 80px rgba(0, 0, 0, 0.4);
 }
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background: linear-gradient(135deg, #d4418e 0%, #0652c5 25%, #d42e81 50%, #5f0f40 75%, #fb8b24 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
     background-attachment: fixed;
     color: var(--dark);
     overflow-x: hidden;
     min-height: 100vh;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* Particles Background */
@@ -42,9 +50,10 @@ body {
     position: absolute;
     width: 10px;
     height: 10px;
-    background: rgba(255, 255, 255, 0.3);
+    background: radial-gradient(circle, rgba(251, 139, 36, 0.8) 0%, rgba(212, 65, 142, 0.5) 100%);
     border-radius: 50%;
     animation: float 15s infinite ease-in-out;
+    box-shadow: 0 0 10px rgba(251, 139, 36, 0.5);
 }
 
 @keyframes float {
@@ -84,6 +93,45 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.header-contact {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.contact-btn {
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.phone-btn {
+    background: white;
+    color: var(--dark);
+}
+
+.phone-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp-btn {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: white;
+}
+
+.whatsapp-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+    background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
 }
 
 .logo {
@@ -111,15 +159,15 @@ body {
 }
 
 .add-btn {
-    background: white;
-    color: var(--secondary);
+    background: linear-gradient(135deg, #ffd700 0%, #fb8b24 100%);
+    color: #1a1a2e;
     border: none;
     padding: 15px 35px;
     border-radius: 50px;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(251, 139, 36, 0.4);
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
@@ -133,9 +181,8 @@ body {
 
 .add-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-    background: var(--gradient-2);
-    color: white;
+    box-shadow: 0 15px 40px rgba(251, 139, 36, 0.6);
+    background: linear-gradient(135deg, #ffed4e 0%, #ffd700 100%);
 }
 
 /* Hero Section */
@@ -163,11 +210,12 @@ body {
 }
 
 .gradient-text {
-    background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #fb8b24 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     animation: fadeInUp 1s ease 0.2s backwards;
+    filter: drop-shadow(2px 2px 10px rgba(255, 215, 0, 0.3));
 }
 
 .hero-subtitle {
@@ -235,10 +283,11 @@ body {
 .view-toggle {
     display: flex;
     gap: 10px;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.25);
     padding: 5px;
     border-radius: 50px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .view-btn {
@@ -253,8 +302,9 @@ body {
 }
 
 .view-btn.active {
-    background: white;
-    color: var(--secondary);
+    background: linear-gradient(135deg, #ffd700 0%, #fb8b24 100%);
+    color: #1a1a2e;
+    box-shadow: 0 5px 15px rgba(251, 139, 36, 0.4);
 }
 
 /* Flower Grid */
@@ -322,7 +372,11 @@ body {
 }
 
 .flower-card:hover::before {
-    opacity: 0.05;
+    opacity: 0.08;
+}
+
+.flower-card:hover::after {
+    opacity: 1;
 }
 
 .flower-card:hover {
@@ -350,17 +404,32 @@ body {
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    position: relative;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 
 .flower-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 }
 
 .flower-card:hover .flower-image img {
-    transform: scale(1.1);
+    transform: scale(1.15) rotate(2deg);
+}
+
+.flower-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+    pointer-events: none;
 }
 
 @keyframes pulse {
@@ -531,7 +600,7 @@ body {
     position: absolute;
     top: 20px;
     right: 20px;
-    background: var(--gradient-2);
+    background: var(--gradient);
     color: white;
     border: none;
     width: 40px;
@@ -543,17 +612,19 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 5px 15px rgba(212, 65, 142, 0.4);
 }
 
 .modal-close:hover {
     transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 8px 20px rgba(212, 65, 142, 0.6);
 }
 
 .modal-title {
     font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
     margin-bottom: 30px;
-    background: var(--gradient);
+    background: linear-gradient(135deg, #d4418e 0%, #fb8b24 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -609,13 +680,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f8f9fa;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     overflow: hidden;
     transition: all 0.3s ease;
+    position: relative;
 }
 
 .image-preview:hover {
     border-color: var(--secondary);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
 .image-preview img {
@@ -623,11 +696,34 @@ body {
     max-height: 300px;
     object-fit: contain;
     border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    animation: fadeInScale 0.4s ease;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .preview-placeholder {
     color: #999;
     font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.preview-placeholder::before {
+    content: '📸';
+    font-size: 3rem;
+    opacity: 0.3;
 }
 
 .form-actions {
@@ -649,8 +745,9 @@ body {
 }
 
 .btn-primary {
-    background: var(--gradient);
+    background: linear-gradient(135deg, #d4418e 0%, #fb8b24 100%);
     color: white;
+    box-shadow: 0 5px 20px rgba(212, 65, 142, 0.4);
 }
 
 .btn-secondary {
@@ -660,7 +757,7 @@ body {
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(212, 65, 142, 0.6);
 }
 
 .btn-secondary:hover {
@@ -714,21 +811,682 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+
+    .header {
+        padding: 20px 0;
+    }
+
+    .header .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .header-contact {
+        width: 100%;
+        flex-direction: row;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .contact-btn {
+        flex: 1;
+        text-align: center;
+        padding: 14px 20px;
+        font-size: 0.85rem;
+        white-space: nowrap;
+    }
+
+    .logo {
+        margin-bottom: 10px;
+    }
+
+    .logo h1 {
+        font-size: 1.8rem;
+    }
+
+    .flower-icon {
+        font-size: 2rem;
+    }
+
+    .add-btn {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+    }
+
+    .add-btn span {
+        font-size: 1.3rem;
+    }
+
+    .hero {
+        padding: 40px 0;
+    }
+
     .hero-title {
         font-size: 2.5rem;
+        line-height: 1.1;
     }
-    
-    .flower-grid {
-        grid-template-columns: 1fr;
+
+    .hero-subtitle {
+        font-size: 1rem;
+        padding: 0 10px;
     }
-    
-    .modal-content {
-        padding: 30px 20px;
+
+    .hero-decoration {
+        margin-top: 30px;
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
     }
-    
+
+    .floating-flower {
+        font-size: 2rem;
+    }
+
+    .catalog {
+        padding: 30px 0 60px;
+    }
+
     .catalog-header {
         flex-direction: column;
         gap: 20px;
-        align-items: flex-start;
+        align-items: center;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .catalog-header h3 {
+        font-size: 1.8rem;
+    }
+
+    .view-toggle {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .flower-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .flower-card {
+        padding: 0;
+        border-radius: 20px;
+    }
+
+    .flower-card-compact-footer {
+        padding: 20px;
+    }
+
+    .flower-name-compact {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    .flower-price-compact {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    .flower-image-large,
+    .flower-emoji-large {
+        height: 280px;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .flower-emoji-large {
+        font-size: 6rem;
+    }
+
+    .flower-card-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .flower-emoji {
+        font-size: 3.5rem;
+    }
+
+    .flower-image {
+        width: 100%;
+        height: 250px;
+        border-radius: 15px;
+    }
+
+    .flower-actions {
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .action-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.4rem;
+    }
+
+    .flower-name {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    .flower-color {
+        text-align: center;
+    }
+
+    .flower-description {
+        text-align: center;
+    }
+
+    .flower-price {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    .modal-content {
+        padding: 35px 25px;
+        width: 95%;
+        max-height: 85vh;
+        border-radius: 25px;
+    }
+
+    .modal-title {
+        font-size: 2rem;
+        margin-bottom: 25px;
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 14px 18px;
+        font-size: 1rem;
+        border-radius: 12px;
+    }
+
+    .image-preview {
+        min-height: 180px;
+        border-radius: 12px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        padding: 16px;
+        font-size: 1.05rem;
+    }
+
+    .notification {
+        right: 10px;
+        left: 10px;
+        top: 10px;
+        padding: 15px 20px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .catalog-header h3 {
+        font-size: 1.5rem;
+    }
+
+    .flower-card {
+        padding: 0;
+    }
+
+    .flower-image-large,
+    .flower-emoji-large {
+        height: 240px;
+    }
+
+    .flower-emoji-large {
+        font-size: 5rem;
+    }
+
+    .flower-name-compact {
+        font-size: 1.2rem;
+    }
+
+    .flower-price-compact {
+        font-size: 1.4rem;
+    }
+
+    .modal-content {
+        padding: 30px 20px;
+    }
+
+    .modal-title {
+        font-size: 1.7rem;
+    }
+
+    .contact-btn {
+        font-size: 0.8rem;
+        padding: 12px 15px;
+    }
+}
+
+/* Compact Flower Cards (User View) */
+.flower-card-compact {
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.flower-card-compact:hover {
+    transform: translateY(-15px) scale(1.03);
+}
+
+.flower-image-large {
+    width: 100%;
+    height: 300px;
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.flower-image-large img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.flower-card-compact:hover .flower-image-large img {
+    transform: scale(1.1);
+}
+
+.flower-emoji-large {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8rem;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+    border-radius: 20px 20px 0 0;
+}
+
+.flower-card-compact-footer {
+    padding: 20px;
+    background: white;
+    border-radius: 0 0 20px 20px;
+}
+
+.flower-name-compact {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--dark);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.flower-price-compact {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: var(--gradient-2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Flower Details Page */
+.back-btn {
+    background: linear-gradient(135deg, #ffd700 0%, #fb8b24 100%);
+    color: #1a1a2e;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(251, 139, 36, 0.3);
+}
+
+.back-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(251, 139, 36, 0.5);
+}
+
+.flower-details-section {
+    padding: 60px 0 100px;
+    position: relative;
+    z-index: 1;
+}
+
+.flower-details-container {
+    min-height: 400px;
+}
+
+.loading {
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    padding: 100px 0;
+}
+
+.error-message {
+    text-align: center;
+    background: white;
+    padding: 60px;
+    border-radius: 30px;
+    box-shadow: var(--shadow);
+}
+
+.error-message h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--dark);
+    margin-bottom: 30px;
+}
+
+.flower-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    background: white;
+    padding: 60px;
+    border-radius: 30px;
+    box-shadow: var(--shadow);
+    animation: fadeInUp 0.8s ease;
+}
+
+.flower-details-image-container {
+    position: relative;
+}
+
+.flower-details-image {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 25px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.flower-details-emoji {
+    width: 100%;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15rem;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+    border-radius: 25px;
+}
+
+.flower-details-content {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.flower-details-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    color: var(--dark);
+    font-weight: 700;
+    line-height: 1.2;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.flower-details-color {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.flower-details-color .label {
+    font-weight: 600;
+    color: var(--secondary);
+}
+
+.flower-details-price {
+    font-size: 3rem;
+    font-weight: 700;
+    background: var(--gradient-2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 10px 0;
+}
+
+.flower-details-description {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 30px;
+    border-radius: 20px;
+    border-left: 5px solid var(--secondary);
+}
+
+.flower-details-description h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--dark);
+    margin-bottom: 15px;
+}
+
+.flower-details-description p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+}
+
+.flower-details-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn-large {
+    flex: 1;
+    padding: 18px 40px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+}
+
+/* Login Page Styles */
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.login-box {
+    background: white;
+    padding: 50px;
+    border-radius: 30px;
+    box-shadow: var(--shadow);
+    max-width: 450px;
+    width: 100%;
+    animation: fadeInUp 0.8s ease;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.login-header .flower-icon {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.login-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.login-error {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+.logout-btn {
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+    border: 2px solid white;
+    padding: 12px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.logout-btn:hover {
+    background: white;
+    color: var(--secondary);
+}
+
+/* Responsive for Details Page */
+@media (max-width: 968px) {
+    .flower-details-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 40px 30px;
+    }
+
+    .flower-details-image {
+        height: 400px;
+    }
+
+    .flower-details-emoji {
+        height: 400px;
+        font-size: 10rem;
+    }
+
+    .flower-details-title {
+        font-size: 2.5rem;
+    }
+
+    .flower-details-price {
+        font-size: 2.5rem;
+    }
+
+    .flower-details-actions {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .flower-details-grid {
+        gap: 30px;
+        padding: 30px 20px;
+        border-radius: 20px;
+    }
+
+    .flower-details-image {
+        height: 350px;
+        border-radius: 20px;
+    }
+
+    .flower-details-emoji {
+        height: 350px;
+        font-size: 8rem;
+    }
+
+    .flower-details-title {
+        font-size: 2.2rem;
+    }
+
+    .flower-details-color {
+        font-size: 1rem;
+    }
+
+    .flower-details-price {
+        font-size: 2.2rem;
+    }
+
+    .flower-details-description {
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    .flower-details-description h3 {
+        font-size: 1.5rem;
+    }
+
+    .flower-details-description p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .flower-details-actions {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .btn-large {
+        padding: 16px 30px;
+        font-size: 1rem;
+    }
+
+    .back-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .login-box {
+        padding: 35px 25px;
+        border-radius: 25px;
+    }
+
+    .login-header .flower-icon {
+        font-size: 3rem;
+    }
+
+    .login-header h1 {
+        font-size: 2rem;
+    }
+
+    .flower-image-large,
+    .flower-emoji-large {
+        height: 250px;
+    }
+
+    .flower-emoji-large {
+        font-size: 6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .flower-details-image {
+        height: 280px;
+    }
+
+    .flower-details-emoji {
+        height: 280px;
+        font-size: 6rem;
+    }
+
+    .flower-details-title {
+        font-size: 1.8rem;
+    }
+
+    .flower-details-price {
+        font-size: 2rem;
     }
 }
