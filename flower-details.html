@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flower Details - BestFlowers</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -17,7 +17,7 @@
                 <span class="flower-icon">🌸</span>
                 <h1>BestFlowers</h1>
             </div>
-            <a href="/" class="back-btn">
+            <a href="./" class="back-btn">
                 ← Back to Collection
             </a>
         </div>
@@ -60,7 +60,7 @@
         const flowerId = urlParams.get('id');
 
         if (!flowerId) {
-            window.location.href = '/';
+            window.location.href = './';
         }
 
         // Load flower details
@@ -72,7 +72,7 @@
                     document.getElementById('flowerDetailsContainer').innerHTML = `
                         <div class="error-message">
                             <h2>Flower not found</h2>
-                            <a href="/" class="btn-primary">Go back to collection</a>
+                            <a href="./" class="btn-primary">Go back to collection</a>
                         </div>
                     `;
                     return;
@@ -85,7 +85,7 @@
                 document.getElementById('flowerDetailsContainer').innerHTML = `
                     <div class="error-message">
                         <h2>Error loading flower details</h2>
-                        <a href="/" class="btn-primary">Go back to collection</a>
+                        <a href="./" class="btn-primary">Go back to collection</a>
                     </div>
                 `;
             }
@@ -123,7 +123,7 @@
                             <a href="${whatsappLink}" target="_blank" class="btn-primary btn-large" style="text-decoration: none;">
                                 <span style="font-size: 1.3rem;">💬</span> Order on WhatsApp
                             </a>
-                            <a href="/" class="btn-secondary btn-large">Browse More</a>
+                            <a href="./" class="btn-secondary btn-large">Browse More</a>
                         </div>
                     </div>
                 </div>
